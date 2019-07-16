@@ -2,40 +2,55 @@
 using ProjectA.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 using System.Text;
 
 namespace ProjectA.Db
 {
     public class SQLRepository<T> : IRepository<T> where T : BaseEntity
     {
-        public System.Linq.IQueryable<T> Collection()
+        internal DataContext context;
+        internal DbSet<T> dbset;
+        public SQLRepository(DataContext context)
         {
-            throw new NotImplementedException();
+            this.context = context;
+            dbset = context.Set<T>();
+        }
+        public IQueryable<T> Collection()
+        {
+            return dbset;
         }
 
         public void Commit()
         {
-            throw new NotImplementedException();
+            context.SaveChanges();
         }
 
         public void Delete(string Id)
         {
-            throw new NotImplementedException();
+            var obj = Find(Id);
+            if (context.Entry(obj).State == EntityState.Detached)
+            {
+                dbset.Attach(obj);
+            }
+            dbset.Remove(obj);
         }
 
         public T Find(string Id)
         {
-            throw new NotImplementedException();
+            return dbset.Find(Id);
         }
 
         public void Insert(T item)
         {
-            throw new NotImplementedException();
+            dbset.Add(item);
         }
 
         public void Update(T item)
         {
-            throw new NotImplementedException();
+            dbset.Attach(item);
+            context.Entry(item).State = EntityState.Modified;
         }
     }
 }
