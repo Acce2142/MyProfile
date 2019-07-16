@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using ProjectA.Core.Models;
+using System.Data.Entity;
 
 namespace ProjectA.Db
 {
@@ -8,5 +9,7 @@ namespace ProjectA.Db
         {
              
         }
+
+        public DbSet<Profile> Profile { get; set; }
     }
 }
