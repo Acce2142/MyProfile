@@ -25,6 +25,8 @@ namespace MyProfile.Core.Models
 
         public string Image { get; set; }
 
+        [MaxLength(300)]
+        public string Description { get; set; }
         [STAThread]
         static void Main()
         {

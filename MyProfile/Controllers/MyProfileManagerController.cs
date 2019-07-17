@@ -56,6 +56,7 @@ namespace MyProfile.Controllers
                     System.Diagnostics.Debug.WriteLine("File saved");
                     System.Diagnostics.Debug.WriteLine(profile.Image);
                 }
+                System.Diagnostics.Debug.WriteLine(profile.Description);
                 context.Insert(profile);
                 context.Commit();
                 return RedirectToAction("Index");
