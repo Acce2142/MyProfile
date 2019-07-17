@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,13 +13,19 @@ namespace MyProfile.Controllers
 {
     public class MyProfileManagerController : Controller
     {
-        List<Profile> profiles = new List<Profile>();
+
         IRepository<Profile> context;
+        public MyProfileManagerController(IRepository<Profile> profileContext)
+        {
+            context = profileContext;
+        }
         // GET: MyProfileManager
         public ActionResult Index()
         {
-            
+
+            List<Profile> profiles = context.Collection().ToList();
             return View(profiles);
+
         }
 
         // GET: MyProfileManager/Details/5
@@ -39,24 +46,22 @@ namespace MyProfile.Controllers
         [HttpPost]
         public ActionResult Create(Profile profile, HttpPostedFileBase file)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
+                System.Diagnostics.Debug.WriteLine("done");
+                if (file != null)
                 {
-                    System.Diagnostics.Debug.WriteLine("done");
-                    profiles.Add(profile);
-                    return RedirectToAction("Index");
+                    profile.Image = profile.Id + Path.GetExtension(file.FileName);
+                    file.SaveAs(Server.MapPath("//Content//Image//") + profile.Image);
+                    System.Diagnostics.Debug.WriteLine("File saved");
+                    System.Diagnostics.Debug.WriteLine(profile.Image);
                 }
-                
-                else
-                {
-                    return View(profile);
-                }
-
-
-                
+                context.Insert(profile);
+                context.Commit();
+                return RedirectToAction("Index");
             }
-            catch
+
+            else
             {
                 return View(profile);
             }

@@ -18,9 +18,6 @@
             @Html.DisplayNameFor(model => model.LastName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DOB)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.PreferedName)
         </th>
         <th>
@@ -38,16 +35,13 @@
         @Html.DisplayFor(modelItem => item.LastName)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.DOB)
-    </td>
-    <td>
         @Html.DisplayFor(modelItem => item.PreferedName)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.Email)
     </td>
     <td>
-        <img class="img-thumbnail" style="height:50px" src="~/Content/ProfileImages/@item.Image" />
+        <img class="img-thumbnail" style="height:50px" src="~/Content/Image/@item.Image" />
     </td>
     <td>
         @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

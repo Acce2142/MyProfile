@@ -16,9 +16,6 @@ namespace MyProfile.Core.Models
         [Required]
         public string LastName { get; set; }
 
-        [Required]
-        public DateTime DOB { get; set; }
-
         [MaxLength(40, ErrorMessage = "Too Long")]
         public string PreferedName { get; set; }
 
