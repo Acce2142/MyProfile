@@ -91,25 +91,35 @@ namespace MyProfile.Controllers
         }
 
         // GET: MyProfileManager/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
-            return View();
+            Profile ProfileToDelete = context.Find(id);
+            if(ProfileToDelete != null)
+            {
+                return View(ProfileToDelete);
+            }
+            else
+            {
+                return HttpNotFound();
+            }
         }
 
         // POST: MyProfileManager/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [ActionName("Delete")]
+        public ActionResult ConfirmDelete(string id)
         {
-            try
+            Profile ProfileToDelete = context.Find(id);
+            if(ProfileToDelete != null)
             {
-                // TODO: Add delete logic here
-
+                context.Delete(id);
+                context.Commit();
                 return RedirectToAction("Index");
-            }
-            catch
+            } else
             {
-                return View();
+                return HttpNotFound();
             }
+
         }
     }
 }
