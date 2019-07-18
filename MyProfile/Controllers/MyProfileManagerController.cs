@@ -69,24 +69,56 @@ namespace MyProfile.Controllers
         }
 
         // GET: MyProfileManager/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
-            return View();
+            Profile ProfileToEdit = context.Find(id);
+            System.Diagnostics.Debug.WriteLine(ProfileToEdit == null);
+            if (ProfileToEdit != null)
+            {
+                System.Diagnostics.Debug.WriteLine("Not null 1");
+                return View(ProfileToEdit);
+            }
+            else
+            {
+                return HttpNotFound();
+            }
         }
 
         // POST: MyProfileManager/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Profile profile, string Id, HttpPostedFileBase file)
         {
-            try
+            Profile ProfileToEdit = context.Find(Id);
+            
+            if (ProfileToEdit != null)
             {
-                // TODO: Add update logic here
+                
+                if (ModelState.IsValid)
+                {
+                    System.Diagnostics.Debug.WriteLine("done");
+                    if (file != null)
+                    {
+                        ProfileToEdit.Image = ProfileToEdit.Id + Path.GetExtension(file.FileName);
+                        file.SaveAs(Server.MapPath("//Content//Image//") + ProfileToEdit.Image);
+                        System.Diagnostics.Debug.WriteLine("File saved");
+                    }
+                    ProfileToEdit.FirstName = profile.FirstName;
+                    ProfileToEdit.LastName = profile.LastName;
+                    ProfileToEdit.PreferedName = profile.PreferedName;
+                    ProfileToEdit.Email = profile.Email;
+                    ProfileToEdit.Description = profile.Description;
+                    context.Commit();
+                    return RedirectToAction("Index");
+                }
 
-                return RedirectToAction("Index");
+                else
+                {
+                    return View(profile);
+                }
             }
-            catch
+            else
             {
-                return View();
+                return HttpNotFound();
             }
         }
 
