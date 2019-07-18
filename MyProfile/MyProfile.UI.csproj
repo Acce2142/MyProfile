@@ -260,6 +260,7 @@
     <Content Include="Views\MyProfileManager\Create.cshtml" />
     <Content Include="Views\MyProfileManager\Delete.cshtml" />
     <Content Include="Views\MyProfileManager\Edit.cshtml" />
+    <Content Include="Views\MyProfileManager\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

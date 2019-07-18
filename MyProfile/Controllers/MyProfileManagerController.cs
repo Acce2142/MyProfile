@@ -29,9 +29,17 @@ namespace MyProfile.Controllers
         }
 
         // GET: MyProfileManager/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
-            return View();
+            Profile profile = context.Find(id);
+            if (profile != null)
+            {
+                return View(profile);
+            }
+            else
+            {
+                return HttpNotFound();
+            }
         }
 
         // GET: MyProfileManager/Create
