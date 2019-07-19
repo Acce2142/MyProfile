@@ -126,7 +126,11 @@ namespace MyProfile.Controllers
                         {
                             return View(profile);
                         }
+                    } else
+                    {
+                        profile.Image = "default.png";
                     }
+
                     ProfileToEdit.FirstName = profile.FirstName;
                     ProfileToEdit.LastName = profile.LastName;
                     ProfileToEdit.PreferedName = profile.PreferedName;
