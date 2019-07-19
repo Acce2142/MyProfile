@@ -12,27 +12,28 @@
     <div class="container">
         <div class="col-md-4" style="height:450px; padding:10px;margin:10px;border:solid thin whitesmoke">
             <div class="col-md-12">
-                <img class="img" style="height:250px" src="~/Content/Image/@item.Image" />
+                <img class="img thumbnail" style="height:100px; width:250px" src="~/Content/Image/@item.Image" />
             </div>
 
-            <div class="text-right">
-                <div class="control-label">
-                    <strong>@Html.DisplayNameFor(model => model.FirstName)</strong>
-                    <div class="control-label">@item.FirstName</div>
-                </div>
-                
+            <div class="col-md-12">
+                <strong>@Html.DisplayNameFor(model => model.FirstName)</strong>
+                <div class="control-label">@item.FirstName</div>
             </div>
-            <div >
-                <strong>@item.LastName</strong>
+            <div class="col-md-12">
+                <strong>@Html.DisplayNameFor(model => model.LastName)</strong>
+                <div class="control-label">@item.LastName</div>  
             </div>
-            <div >
-                <strong>@item.PreferedName</strong>
+            <div class="col-md-12">
+                <strong>@Html.DisplayNameFor(model => model.PreferedName)</strong>
+                <div class="control-label">@item.PreferedName</div>
             </div>
-            <div >
-                <strong>@item.Email</strong>
+            <div class="col-md-12">
+                <strong>@Html.DisplayNameFor(model => model.Email)</strong>
+                <div class="control-label">@item.Email</div>
             </div>
-            <div >
-                <p>@item.Description</p>
+            <div class="col-md-12">
+                <strong>@Html.DisplayNameFor(model => model.Description)</strong>
+                <div class="control-label">@item.Description</div>
             </div>
         </div>
     </div>
