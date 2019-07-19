@@ -3,57 +3,40 @@
 @{
     ViewBag.Title = "All Profiles";
 }
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PreferedName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Image)
-        </th>
-    </tr>
-
+<div class="col-md-12">
+    <h3>Profile</h3>
+</div>
+<div class="col-md-12">
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PreferedName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                <img class="img-thumbnail" style="height:50px" src="~/Content/Image/@item.Image" />
-            </td>
-           
-        </tr>
-    }
+    <div class="container">
+        <div class="col-md-4" style="height:450px; padding:10px;margin:10px;border:solid thin whitesmoke">
+            <div class="col-md-12">
+                <img class="img" style="height:250px" src="~/Content/Image/@item.Image" />
+            </div>
 
-</table>
+            <div class="text-right">
+                <div class="control-label">
+                    <strong>@Html.DisplayNameFor(model => model.FirstName)</strong>
+                    <div class="control-label">@item.FirstName</div>
+                </div>
+                
+            </div>
+            <div >
+                <strong>@item.LastName</strong>
+            </div>
+            <div >
+                <strong>@item.PreferedName</strong>
+            </div>
+            <div >
+                <strong>@item.Email</strong>
+            </div>
+            <div >
+                <p>@item.Description</p>
+            </div>
+        </div>
+    </div>
+
+    }
+</div>
+<div class="col-md-12 clearfix"></div>
