@@ -69,6 +69,9 @@ namespace MyProfile.Controllers
                     {
                         return View(profile);
                     }
+                } else
+                {
+                    profile.Image = "default.png";
                 }
                 System.Diagnostics.Debug.WriteLine(profile.Description);
                 context.Insert(profile);
