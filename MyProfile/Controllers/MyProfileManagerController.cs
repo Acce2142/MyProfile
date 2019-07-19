@@ -13,7 +13,7 @@ namespace MyProfile.Controllers
 {
     public class MyProfileManagerController : Controller
     {
-
+        FileTypes type = new FileTypes();
         IRepository<Profile> context;
         public MyProfileManagerController(IRepository<Profile> profileContext)
         {
@@ -59,10 +59,16 @@ namespace MyProfile.Controllers
                 System.Diagnostics.Debug.WriteLine("done");
                 if (file != null)
                 {
-                    profile.Image = profile.Id + Path.GetExtension(file.FileName);
-                    file.SaveAs(Server.MapPath("//Content//Image//") + profile.Image);
-                    System.Diagnostics.Debug.WriteLine("File saved");
-                    System.Diagnostics.Debug.WriteLine(profile.Image);
+                    if (type.ImageExtensions.Contains(Path.GetExtension(file.FileName).ToUpperInvariant()))
+                    {
+                        profile.Image = profile.Id + Path.GetExtension(file.FileName);
+                        file.SaveAs(Server.MapPath("//Content//Image//") + profile.Image);
+                        System.Diagnostics.Debug.WriteLine("File saved");
+                        System.Diagnostics.Debug.WriteLine(profile.Image);
+                    } else
+                    {
+                        return View(profile);
+                    }
                 }
                 System.Diagnostics.Debug.WriteLine(profile.Description);
                 context.Insert(profile);
@@ -103,12 +109,20 @@ namespace MyProfile.Controllers
                 
                 if (ModelState.IsValid)
                 {
+                    
                     System.Diagnostics.Debug.WriteLine("done");
                     if (file != null)
                     {
-                        ProfileToEdit.Image = ProfileToEdit.Id + Path.GetExtension(file.FileName);
-                        file.SaveAs(Server.MapPath("//Content//Image//") + ProfileToEdit.Image);
-                        System.Diagnostics.Debug.WriteLine("File saved");
+                        if (type.ImageExtensions.Contains(Path.GetExtension(file.FileName).ToUpperInvariant()))
+                        {
+                            ProfileToEdit.Image = ProfileToEdit.Id + Path.GetExtension(file.FileName);
+                            file.SaveAs(Server.MapPath("//Content//Image//") + ProfileToEdit.Image);
+                            System.Diagnostics.Debug.WriteLine("File saved");
+                        }
+                        else
+                        {
+                            return View(profile);
+                        }
                     }
                     ProfileToEdit.FirstName = profile.FirstName;
                     ProfileToEdit.LastName = profile.LastName;

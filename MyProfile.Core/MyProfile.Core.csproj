@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\BaseEntity.cs" />
+    <Compile Include="Contracts\FileTypes.cs" />
     <Compile Include="Contracts\IRepository.cs" />
     <Compile Include="Models\Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
