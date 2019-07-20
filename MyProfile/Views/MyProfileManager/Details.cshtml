@@ -22,7 +22,16 @@
     }
 
     */
+    
+    div #image:hover{
+        animation: myAnimation;
+        animation-duration :5s;
+    }
+    @@keyframes myAnimation {
+        from {border-radius: 0 0 0 0;}
+        to{ border-radius: 100% 100% 100% 100%; }
 
+    }
     
 </style>
 
@@ -62,7 +71,7 @@
         <div class="col-md-12">
             @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <img class="img-thumbnail" style="height:400px;" id="image" src="~/Content/Image/@Model.Image" />
+                <img class="img-thumbnail" id="image" src="~/Content/Image/@Model.Image" />
             </div>
         </div>
         <div class="col-md-12">
