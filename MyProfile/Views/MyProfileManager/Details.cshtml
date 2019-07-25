@@ -3,8 +3,8 @@
 @{
     ViewBag.Title = "Details";
 }
-
-
+    
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
     <link href="~/Content/DetailsCss/Styles.css" rel="stylesheet" />
 
 <div>
@@ -66,3 +66,6 @@
 
 </div>
 
+<script >
+    $('div .col-md-12').hover(function () { $(this).css("background-color", "#ccff66") }, function () { $(this).css("background-color", "white") });
+</script>

@@ -1,9 +1,13 @@
 ﻿div .col-md-12 {
     margin: 10px;
-    border-bottom-style: solid;
+    border-bottom-style: groove;
     border-bottom-width: 2px;
-    border-bottom-color: black;
+    border-bottom-color: greenyellow;
 }
+
+
+
+
 /*
         .row-m-t{
         margin : 10px;
@@ -14,7 +18,14 @@
     }
 
     */
-
+div #image{
+    max-height : 250px;
+    max-width :250px;
+    min-height : 200px;
+    min-width : 200px;
+    height :auto;
+    width:auto;
+}
 div #image:hover {
     animation: myAnimation;
     animation-duration: 5s;
