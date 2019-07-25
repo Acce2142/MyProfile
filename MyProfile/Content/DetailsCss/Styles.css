@@ -1,0 +1,31 @@
+﻿div .col-md-12 {
+    margin: 10px;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: black;
+}
+/*
+        .row-m-t{
+        margin : 10px;
+        border-bottom-style : solid;
+        border-bottom-width : 2px;
+        border-bottom-color : black;
+        
+    }
+
+    */
+
+div #image:hover {
+    animation: myAnimation;
+    animation-duration: 5s;
+}
+
+@keyframes myAnimation {
+    from {
+        border-radius: 0 0 0 0;
+    }
+
+    to {
+        border-radius: 100% 100% 100% 100%;
+    }
+}

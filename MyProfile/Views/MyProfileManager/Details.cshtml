@@ -5,18 +5,20 @@
 }
 
 
+    <link href="~/Content/DetailsCss/Styles.css" rel="stylesheet" />
+
 <div>
     <h4>Profile</h4>
     <hr />
-    <div class="form-horizontal">
-        <div class="form-group">
+    <div class="container-fluid">
+        <div class="col-md-12">
             @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DisplayFor(model => model.FirstName, new { @class = "form-control control-label" })
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="col-md-12">
             @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DisplayFor(model => model.LastName, new { @class = "form-control control-label" })
@@ -24,44 +26,43 @@
         </div>
 
 
-        <div class="form-group">
+        <div class="col-md-12">
             @Html.LabelFor(model => model.PreferedName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DisplayFor(model => model.PreferedName, new { @class = "form-control control-label" })
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="col-md-12">
             @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DisplayFor(model => model.Email, new { @class = "form-control control-label" })
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="col-md-12">
             @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <img class="img-thumbnail" style="height:400px;" src="~/Content/Image/@Model.Image" />
+                <img class="img-thumbnail" id="image" src="~/Content/Image/@Model.Image" />
             </div>
         </div>
-
-
-
-        <div class="form-group">
+        <div class="col-md-12">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DisplayFor(model => model.Description, new { @class = "form-control control-label" })
             </div>
         </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                @Html.ActionLink("Edit", "Edit", null, new { id = Model.Id }, new { @class = "btn btn-info" })
+        <div class="col-md-10" style="margin:5px">
+            <div class="col-md-10">
+                @Html.ActionLink("Edit", "Edit", null, new { id = Model.Id }, new { @class = "btn btn-danger" })
             </div>
         </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                @Html.ActionLink("Back to List", "Index", null, new { id = Model.Id }, new { @class = "btn btn-info" })
+        <div class="col-md-10" style="margin:5px">
+            <div class="col-md-10">
+                @Html.ActionLink("Back to List", "Index", null, new { id = Model.Id }, new { @class = "btn btn-success" })
             </div>
         </div>
     </div>
+
 </div>
+

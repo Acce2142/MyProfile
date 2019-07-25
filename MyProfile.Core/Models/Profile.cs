@@ -25,7 +25,7 @@ namespace MyProfile.Core.Models
 
         public string Image { get; set; }
 
-        [MaxLength(300)]
+        [MaxLength(300, ErrorMessage = "Dudu is a short description so please dont write a story here xD")]
         public string Description { get; set; }
         [STAThread]
         static void Main()
