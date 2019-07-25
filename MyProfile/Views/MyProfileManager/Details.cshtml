@@ -8,9 +8,13 @@
     <link href="~/Content/DetailsCss/Styles.css" rel="stylesheet" />
 
 <div>
-    <h4>Profile</h4>
-    <hr />
+
     <div class="container-fluid">
+        <div class="col-md-12">
+            <h4>Profile</h4>
+            <hr />
+        </div>
+        
         <div class="col-md-12">
             @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -67,5 +71,6 @@
 </div>
 
 <script >
+    //add high light effect
     $('div .col-md-12').hover(function () { $(this).css("background-color", "#ccff66") }, function () { $(this).css("background-color", "white") });
 </script>
